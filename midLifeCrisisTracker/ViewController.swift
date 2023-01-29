@@ -57,22 +57,43 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     @IBAction func foodSubmitAction(_ sender: UIButton) {
         print(selectedFood)
-        if 40 - (Int(selectedFood) ?? 0) > 0 {
-            var newMin = 40 - (Int(selectedFood) ?? 0)
+        var newMin = 0
+        var newMax = 0
+        var ageRange = 0
+        var min = 40 - (Int(selectedFood) ?? 0)
+        var max = 60 - (Int(selectedFood) ?? 0)
+        if max > 0{
+            if min >= 0{
+                newMin = min
+            }
+            else{
+                newMin = 0
+            }
+            newMax = max
+            print("min age is \(newMin)")
+            print("max age is \(newMax)")
+             ageRange = Int.random(in: newMin...newMax)
+               // ageRange = ageRange - (Int(selectedFood) ?? 0)
+            ageOutlet.text = "your midlife crisis will be in \(ageRange) years"
+
+        }
+        else{
+        
+            ageOutlet.text = "you are past the average age of a midlife crisis"
+        }
+       /* if 40 - (Int(selectedFood) ?? 0) > 0 {
+             newMin = 40 - (Int(selectedFood) ?? 0)
         }
         else {
-            var newMin = 40
+             newMin = 40
         }
         if 60 - (Int(selectedFood) ?? 0) > 0 {
-            var newMax = 60 - (Int(selectedFood) ?? 0)
+             newMax = 60 - (Int(selectedFood) ?? 0)
         }
         else {
             newMax = 60
         }
-        var ageRange = Int.random(in: newMin...newMax)
-            ageRange = ageRange - (Int(selectedFood) ?? 0)
-        ageOutlet.text = "your midlife crisis will be in \(ageRange) years"
-
+        */
     }
 
  
